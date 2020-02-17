@@ -8,6 +8,7 @@ class App extends Component{
     super(props)
     this.state = {
       inputValue: [],
+      output: '',
     }
   }
 
@@ -31,15 +32,61 @@ class App extends Component{
     }
   }
 
+  // arraysEqual = (array1, array2) => {
+  //   if (!Array.isArray(array1) || ! Array.isArray(array2) || array1.length !== array2.length){
+  //     // return false;
+  //     let arr1 = array1.concat().sort();
+  //     let arr2 = array2.concat().sort();
+  //     for (var i = 0; i < arr1.length; i++) {
+  //       if (arr1[i] !== arr2[i]){
+  //         // return false;
+  //         console.log(false)
+  //       }
+  //     }
+  //   }
+  //   // return true;
+  //   console.log(true)
+  // }
+
   checkArray = (e) => {
+    let {inputValue} = this.state;
+    this.setState({output: ''})
     this.checkHTML(e)
-    console.log(this.state.inputValue)
-    console.log(this.state.inputValue[0])
-    // for (let i = 0; i < this.state.inputValue[1].length; i++) {
-      
+    let array1 = inputValue[0]
+    let removeChar = inputValue[1].map(i => i.replace('/',''));
+    let array2 = removeChar.reverse();
+
+    console.log(array1, array2);
+    if (!Array.isArray(array1) || ! Array.isArray(array2) || array1.length !== array2.length){
+      // return false;
+      let arr1 = array1.concat().sort();
+      let arr2 = array2.concat().sort();
+      for (var i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]){
+          this.setState({output: 'Expected # found #'})
+          console.log(false)
+        }
+      }
+    }
+    this.setState({output: 'Correctly tagged Paragraph'})
+    console.log(true)
+    // arraysEqual(array1, array2);
+
+
+    // if(inputValue[0] == matchArrays){
+    //   console.log('match')
+    // }
+    // else{
+    //   console.log('dont match')
+    // }
+
+
+    // for (let i = 0; i < inputValue[1].length; i++) {
+    //   inputValue[i] = inputValue[i].replace('/'/g,'');
+    //   console.log(inputValue)
     // }
     // this.state.inputValue[1].split('/').join('')
-    console.log(this.state.inputValue[1])
+    // console.log(inputValue[1])
 
 
     //future code
@@ -57,6 +104,7 @@ class App extends Component{
           </Form.Group>
           <Button type="submit">Okay</Button>
         </Form>
+        <p>{this.state.output}</p>
       </div>
     );
   }
