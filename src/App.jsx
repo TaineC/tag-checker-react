@@ -35,9 +35,9 @@ class App extends Component{
     this.checkHTML(e)
     console.log(this.state.inputValue)
     console.log(this.state.inputValue[0])
-    for (let i = 0; i < this.state.inputValue[1].length; i++) {
-      console.log(this.state.inputValue)
-    }
+    // for (let i = 0; i < this.state.inputValue[1].length; i++) {
+      
+    // }
     // this.state.inputValue[1].split('/').join('')
     console.log(this.state.inputValue[1])
 
